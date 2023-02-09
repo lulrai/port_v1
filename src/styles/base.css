@@ -1,0 +1,171 @@
+:root {
+  --primary-430: hsl(16, 39%, 89%);
+  --primary-450: hsl(16, 41%, 84%);
+  --primary-500: hsl(14, 51%, 75%);
+  --primary-570: hsl(347, 50%, 60%);
+  --primary-600: hsl(346, 66%, 44%);
+  --primary-650: hsl(287, 18%, 64%);
+  --neutral-380: hsla(50, 21%, 95%, 0.8);
+  --neutral-400: hsl(50, 21%, 95%);
+  --neutral-410: hsla(38, 8%, 72%, 0.1);
+  --neutral-450: hsl(40, 9%, 80%);
+  --neutral-500: hsl(38, 8%, 72%);
+  --neutral-670: hsla(236, 20%, 32%, 0.3);
+  --neutral-700: hsl(236, 20%, 32%);
+  --neutral-750: hsl(234, 5%, 58%);
+  --neutral-800: hsl(225, 62%, 10%);
+  --light-image-shade: hsl(0, 4%, 84%);
+  --light-scrollbar-thumb-color: hsl(38, 8%, 72%);
+
+  --dark-primary-430: hsl(220, 39%, 30%);
+  --dark-primary-450: hsl(220, 41%, 25%);
+  --dark-primary-500: hsl(220, 51%, 15%);
+  --dark-primary-570: hsl(57, 50%, 40%);
+  --dark-primary-600: hsl(58, 66%, 56%);
+  --dark-primary-650: hsl(123, 18%, 36%);
+  --dark-neutral-380: hsla(210, 21%, 5%, 0.8);
+  --dark-neutral-400: hsl(210, 21%, 5%);
+  --dark-neutral-410: hsla(222, 8%, 28%, 0.1);
+  --dark-neutral-450: hsl(220, 9%, 20%);
+  --dark-neutral-500: hsl(222, 8%, 28%);
+  --dark-neutral-670: hsla(124, 20%, 68%, 0.3);
+  --dark-neutral-700: hsl(124, 20%, 68%);
+  --dark-neutral-750: hsl(126, 5%, 42%);
+  --dark-neutral-800: hsl(135, 62%, 90%);
+  --dark-image-shade: #26292a;
+  --dark-scrollbar-thumb-color: hsl(222, 8%, 28%);
+
+  --ff-sans-title: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
+  --ff-sans-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
+  --ff-mono: 'Spline Sans Mono', monospace;
+
+  --fs-xs: 0.875rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-xxl: 1.5rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: 2rem;
+  --fs-4xl: 2.5rem;
+  --fs-5xl: 3rem;
+  --fs-6xl: 3.5rem;
+
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-out-sine: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  --ease-in-out-sine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  --ms50: 50ms;
+  --ms100: 100ms;
+  --ms150: 150ms;
+  --ms200: 200ms;
+  --ms250: 250ms;
+  --ms300: 300ms;
+  --ms350: 350ms;
+  --ms400: 400ms;
+  --ms450: 450ms;
+  --ms500: 500ms;
+  --ms550: 550ms;
+  --ms600: 600ms;
+  --ms650: 650ms;
+  --ms700: 700ms;
+  --ms750: 750ms;
+  --ms800: 800ms;
+  --ms850: 850ms;
+  --ms900: 900ms;
+  --ms950: 950ms;
+  --s1: 1000ms;
+  --s2: 2000ms;
+  --s3: 3000ms;
+  --s4: 4000ms;
+  --s5: 5000ms;
+
+  --body-max-w: 1356px;
+  --box-shadow-btn: 0 0.125em 0.5em var(--image-shade);
+}
+
+.dark {
+  transition: all var(--ms300) var(--ease-out-expo);
+  --primary-430: var(--dark-primary-430);
+  --primary-450: var(--dark-primary-450);
+  --primary-500: var(--dark-primary-500);
+  --primary-570: var(--dark-primary-570);
+  --primary-600: var(--dark-primary-600);
+  --primary-650: var(--dark-primary-650);
+  --neutral-380: var(--dark-neutral-380);
+  --neutral-400: var(--dark-neutral-400);
+  --neutral-410: var(--dark-neutral-410);
+  --neutral-450: var(--dark-neutral-450);
+  --neutral-500: var(--dark-neutral-500);
+  --neutral-670: var(--dark-neutral-670);
+  --neutral-700: var(--dark-neutral-700);
+  --neutral-750: var(--dark-neutral-750);
+  --neutral-800: var(--dark-neutral-800);
+  --scrollbar-thumb-color: var(--dark-scrollbar-thumb-color);
+  --image-shade: var(--dark-image-shade);
+}
+
+.light {
+  transition: all var(--ms300) var(--ease-out-expo);
+  --primary-430: var(--light-primary-430);
+  --primary-450: var(--light-primary-450);
+  --primary-500: var(--light-primary-500);
+  --primary-570: var(--light-primary-570);
+  --primary-600: var(--light-primary-600);
+  --primary-650: var(--light-primary-650);
+  --neutral-380: var(--light-neutral-380);
+  --neutral-400: var(--light-neutral-400);
+  --neutral-410: var(--light-neutral-410);
+  --neutral-450: var(--light-neutral-450);
+  --neutral-500: var(--light-neutral-500);
+  --neutral-670: var(--light-neutral-670);
+  --neutral-700: var(--light-neutral-700);
+  --neutral-750: var(--light-neutral-750);
+  --neutral-800: var(--light-neutral-800);
+  --scrollbar-thumb-color: var(--light-scrollbar-thumb-color);
+  --image-shade: var(--light-image-shade);
+}
+
+body {
+  font-family: var(--ff-sans-body);
+  background-color: var(--neutral-400);
+}
+
+::-webkit-scrollbar {
+  width: 0.9375em;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-500);
+  outline: 2px transparent;
+  border-radius: 50em;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-600);
+}
+
+main {
+  position: relative;
+}
+
+@media (max-width: 50em) {
+  :root {
+    --fs-4xl: 1.75rem;
+    --fs-6xl: 2.25rem;
+  }
+}

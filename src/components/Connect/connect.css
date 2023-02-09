@@ -1,0 +1,105 @@
+.connect {
+  max-width: 1356px;
+  margin-inline: auto;
+  padding-inline: 4rem;
+  padding-block: 4rem 10rem;
+}
+
+.cta-box {
+  margin-bottom: 2.5rem;
+  margin-inline: auto;
+  text-align: center;
+  max-width: fit-content;
+  border-bottom: 1px solid var(--neutral-800);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.cta-box .title {
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  color: var(--neutral-800);
+  margin-block-end: 0.5em;
+  position: relative;
+  max-width: fit-content;
+  margin-inline: auto;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.cta-box .title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 0.125em;
+  background-color: var(--primary-600);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.cta-box .sub-title {
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-xxl);
+  font-weight: 700;
+  color: var(--neutral-750);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.cta-box .text {
+  font-family: var(--ff-sans-body);
+  font-size: var(--fs-base);
+  font-weight: 400;
+  color: var(--neutral-700);
+  max-width: 55ch;
+  line-height: 1.75rem;
+  margin-inline: auto;
+  margin-block: 1.125em;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.cta-box .text .bold {
+  font-weight: 500;
+  color: var(--neutral-800);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.cta-box .btn {
+  margin-inline: auto;
+}
+
+.connect-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.375rem;
+  justify-content: center;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.connect-links .link {
+  display: block;
+  font-size: 1.625rem;
+  color: var(--primary-570);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.connect-links .link:is(:hover, :active, :focus) {
+  color: var(--primary-600);
+  transform: translateY(-0.125em);
+}
+
+@media only screen and (max-width: 50em) {
+  .connect {
+    padding-block: 5rem 6rem;
+    padding-inline: 1.5rem;
+  }
+  .cta-box .title {
+    font-size: var(--fs-xl);
+  }
+  .cta-box .sub-title {
+    font-size: var(--fs-lg);
+  }
+  .cta-box .cta {
+    font-size: var(--fs-base);
+  }
+}

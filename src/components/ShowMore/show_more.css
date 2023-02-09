@@ -1,0 +1,179 @@
+.show-more {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 4rem;
+  position: relative;
+}
+
+.show-more-btn {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--neutral-800);
+  letter-spacing: 0.25px;
+  transition: color var(--ease-out-expo) var(--ms300);
+  position: relative;
+}
+
+.show-more-btn:hover {
+  color: var(--primary-600);
+  text-shadow: 0 0 0.25em var(--primary-500);
+}
+
+.show-more-btn:focus {
+  outline: none;
+}
+
+.show-more-btn::before,
+.show-more-btn::after {
+  content: '';
+  position: absolute;
+  background-color: var(--neutral-800);
+  height: 1px;
+  width: 40%;
+  top: 50%;
+  transition: all var(--ease-out-expo) var(--ms300);
+}
+
+.show-more-btn::before {
+  left: 0;
+}
+
+.show-more-btn::after {
+  right: 0;
+}
+
+.show-more .more-box {
+  margin-block-end: 5rem;
+}
+
+.show-more .more {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  word-wrap: break-word;
+  gap: 2.125rem;
+}
+
+.more .card {
+  padding: 1.5em;
+  background-color: var(--neutral-410);
+  border: 1px solid var(--primary-450);
+  border-radius: 0.5em;
+  display: block;
+  color: var(--neutral-800);
+  text-decoration: none;
+  margin-inline: auto;
+  transition: all var(--ease-in-out-quad) var(--ms300);
+  overflow: hidden;
+}
+
+.more .card:is(:hover, :active, .card:is(:hover, :active, :focus-within)) {
+  transform: translateY(-0.125em);
+  box-shadow: 0 0.125em 0.375em var(--primary-450);
+  border-color: var(--primary-500);
+}
+
+.more .card:is(:hover, :active, :focus-within) .relevant .name {
+  color: var(--primary-600);
+}
+
+.card .relevant {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  transition: all var(--ease-in-out-quad) var(--ms300);
+}
+
+.card .decoration {
+  font-size: 2rem;
+  color: var(--primary-450);
+  margin-bottom: 1.125rem;
+  transition: all var(--ease-in-out-quad) var(--ms300);
+}
+
+.relevant .name {
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--neutral-700);
+  transition: all var(--ease-in-out-quad) var(--ms300);
+}
+
+.relevant .external-links-box {
+  display: flex;
+  gap: 0.75em;
+}
+
+.relevant .external-link {
+  display: block;
+  font-size: 2.5rem;
+  color: var(--primary-570);
+  transition: all var(--ease-in-out-quad) var(--ms300);
+}
+
+.relevant .external-link:is(:hover, :active, :focus) {
+  color: var(--primary-600);
+  transform: translateY(-0.125em);
+}
+
+.card .info {
+  font-family: var(--ff-sans-body);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--neutral-700);
+  max-width: 52ch;
+  line-height: 1.5rem;
+  padding-block: 1.125em;
+  transition: all var(--ease-in-out-quad) var(--ms300);
+}
+
+.card .stack {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5em;
+}
+
+.card .stack .item {
+  font-family: var(--ff-mono);
+  font-weight: 500;
+  font-size: var(--fs-xs);
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+  background-color: var(--primary-430);
+  color: var(--primary-600);
+  transition: all var(--ease-in-out-quad) var(--ms300);
+}
+
+@media only screen and (max-width: 50em) {
+  .show-more {
+    margin-block-start: 1.5rem;
+  }
+  .show-more-btn::after,
+  .show-more-btn::before {
+    display: none;
+  }
+
+  .show-more .more-box {
+    margin-block-end: 2.25rem;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .show-more .more {
+    grid-template-columns: 1fr;
+  }
+
+  .card .relevant {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card .stack {
+    justify-content: center;
+  }
+}

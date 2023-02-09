@@ -1,0 +1,17 @@
+.footer {
+  border: 0;
+  padding-block: 2.5em;
+}
+
+.footer .text-box {
+  margin-inline: auto;
+}
+
+.footer .text-box .text {
+  font-family: var(--ff-sans-body);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--neutral-800);
+  text-align: center;
+  transition: all var(--ms300) var(--ease-out-expo);
+}

@@ -1,0 +1,37 @@
+.anchor-mail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7.5em;
+  position: fixed;
+  right: -5.5em;
+  bottom: 0;
+  z-index: 30;
+}
+
+.anchor-mail .mail {
+  transform: rotate(90deg);
+  text-decoration: none;
+  color: var(--primary-570);
+  font-family: var(--ff-mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.anchor-mail .mail:is(:hover, :active, :focus) {
+  color: var(--primary-600);
+}
+
+.anchor-mail .decoration {
+  width: 1px;
+  height: 4rem;
+  background-color: var(--primary-570);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+@media only screen and (max-width: 50em) {
+  .anchor-mail {
+    display: none;
+  }
+}

@@ -1,0 +1,92 @@
+.whoami {
+  max-width: 1356px;
+  margin-block-end: 3rem;
+  padding-inline: 4rem;
+  padding-block-start: 5rem;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+}
+
+.whoami-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.whoami .title {
+  font-size: var(--fs-xxl);
+  font-family: var(--ff-sans-title);
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  color: var(--neutral-800);
+  margin-block-end: 1rem;
+  position: relative;
+  max-width: fit-content;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.whoami .title::after {
+  left: 0;
+  bottom: 0;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.125em;
+  background-color: var(--primary-600);
+  transition: background-color var(--ms300) var(--ease-out-expo);
+}
+
+.whoami .text {
+  font-size: var(--fs-base);
+  font-family: var(--ff-sans-body);
+  color: var(--neutral-700);
+  line-height: 2rem;
+  margin-block: 0.75rem;
+  max-width: 72ch;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.whoami .text .bold {
+  font-weight: 500;
+  color: var(--neutral-800);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.whoami .text .italic {
+  font-style: italic;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.whoami .text .mono {
+  font-weight: 500;
+  font-family: var(--ff-mono);
+  color: var(--neutral-800);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+@media only screen and (max-width: 50em) {
+  .whoami {
+    padding-inline: 1.5rem;
+    padding-block-start: 1.5rem;
+  }
+
+  .whoami-box {
+    grid-template-columns: 1fr;
+  }
+
+  .whoami .text-box {
+    align-items: center;
+  }
+
+  .whoami .title {
+    margin-inline: auto;
+    font-size: var(--fs-xl);
+  }
+}

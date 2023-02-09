@@ -1,0 +1,133 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 1.5em;
+  position: fixed;
+  inset: 0 0 auto;
+  overflow: hidden;
+  z-index: 100;
+  background-color: var(--neutral-380);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.nav.blur-bg {
+  backdrop-filter: blur(15px);
+  padding-block: 0.5em;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.nav-logo-box {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-600);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.nav-logo-text {
+  font-size: var(--fs-xl);
+  font-family: var(--ff-sans-title);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-left: -2px;
+}
+
+.nav-links-box {
+  display: flex;
+  gap: 2.375rem;
+  align-items: center;
+}
+
+.nav-links {
+  font-family: var(--ff-sans-title);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.25px;
+  text-decoration: none;
+  display: block;
+  color: var(--neutral-800);
+  position: relative;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.nav-links::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  background-color: var(--primary-600);
+  position: absolute;
+  left: 0;
+  bottom: -0.125rem;
+  transform: scale(0);
+  transform-origin: center;
+  transition: all var(--ms300) var(--ease-out-sine);
+}
+
+.nav-links:is(:hover, :active, :focus) {
+  color: var(--neutral-700);
+}
+
+.nav-links:is(:hover, :active, :focus)::after {
+  transform: scale(1);
+}
+
+.nav-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 50em) {
+  .nav {
+    padding: 1.5rem;
+    position: fixed;
+    overflow: visible;
+  }
+
+  .nav-menu {
+    display: block;
+    height: 2rem;
+  }
+
+  .nav-logo-icon {
+    max-height: 2rem;
+    display: inline-block;
+  }
+
+  .nav-logo-text {
+    font-size: var(--fs-base);
+  }
+
+  .nav-links-box {
+    display: none;
+    position: absolute;
+    inset: 5em 0 auto 0;
+    padding-block: 2em;
+    background-color: var(--neutral-400);
+    box-shadow: 0 100vh 0 100vh var(--neutral-410);
+    transition: all var(--ms300) var(--ease-out-expo);
+    transform: translateY(-20%);
+    opacity: 0;
+    z-index: 0;
+  }
+
+  .nav-links {
+    font-size: var(--fs-base);
+  }
+
+  .nav-links-box.expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: menu-open var(--ease-out-quad) var(--ms500) forwards;
+    z-index: 50;
+  }
+
+  .nav-links-box.expanded.fix {
+    top: 3.5em;
+  }
+
+  .nav.blur-bg {
+    background-color: var(--neutral-400);
+    padding-block: 0.75em;
+  }
+}

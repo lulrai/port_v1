@@ -1,0 +1,15 @@
+.btn-box .btn {
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  letter-spacing: 0.25px;
+  text-decoration: none;
+  color: var(--neutral-400);
+  max-width: fit-content;
+  display: block;
+  margin-block: 1.5rem;
+  padding: 0.75em 2em;
+  background-color: var(--primary-600);
+  border-radius: 2em;
+  transition: all var(--ms300) var(--ease-out-expo);
+}

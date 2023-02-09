@@ -1,0 +1,158 @@
+#togg-container {
+  -webkit-tap-highlight-color: transparent;
+  background-color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  transform: scale(0.55);
+  transition: transform 300ms;
+  width: 100px;
+}
+.togg-container:active {
+  transform: scale(0.73);
+}
+.togg-fill {
+  background-color: #fff;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.togg-fill1 {
+  background-color: #000;
+  clip-path: circle(19px at 73px 25px);
+}
+.togg-fill2 {
+  animation: right2 500ms both;
+  background-color: #fff;
+  clip-path: circle(19px at 25px 25px);
+}
+.togg-circle {
+  background: #fff;
+  border-radius: 20px;
+  height: 38px;
+  position: relative;
+  top: 6px;
+  width: 38px;
+}
+.togg-circle1 {
+  background-color: #fff;
+  left: 6px;
+}
+.togg-circle2 {
+  animation: right4 500ms both;
+  background-color: #000;
+  left: 54px;
+}
+.togg-drop {
+  animation: right2d 500ms both;
+  background-color: #000;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.togg-container-active .togg-fill1 {
+  animation: left1 500ms both;
+}
+.togg-container-active .togg-fill2 {
+  animation: left2 500ms both;
+}
+.togg-container-active .togg-circle1 {
+  animation: left3 500ms both;
+}
+.togg-container-active .togg-circle2 {
+  animation: left4 500ms both;
+}
+.togg-container-active .togg-drop {
+  animation: leftd 500ms both;
+}
+
+@keyframes left1 {
+  0% {
+    clip-path: circle(19px at 73px 25px);
+  }
+  99% {
+    clip-path: circle(74px at 73px 25px);
+  }
+  100% {
+    clip-path: circle(74px at 73px 25px);
+  }
+}
+@keyframes left2 {
+  0% {
+    clip-path: circle(74px at 25px 25px);
+  }
+  99% {
+    clip-path: circle(19px at 25px 25px);
+  }
+  100% {
+    clip-path: circle(19px at 25px 25px);
+  }
+}
+@keyframes left3 {
+  0% {
+    left: 14px;
+  }
+  99% {
+    left: 6px;
+  }
+  100% {
+    left: 6px;
+  }
+}
+@keyframes left4 {
+  0% {
+    left: 54px;
+  }
+  99% {
+    left: 46px;
+  }
+  100% {
+    left: 46px;
+  }
+}
+@keyframes leftd {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes right2 {
+  0% {
+    clip-path: circle(19px at 25px 25px);
+  }
+  99% {
+    clip-path: circle(74px at 25px 25px);
+  }
+  100% {
+    clip-path: circle(74px at 25px 25px);
+  }
+}
+@keyframes right2d {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes right4 {
+  0% {
+    left: 46px;
+  }
+  99% {
+    left: 54px;
+  }
+  100% {
+    left: 54px;
+  }
+}

@@ -1,0 +1,201 @@
+.work {
+  max-width: 1356px;
+  margin-inline: auto;
+  padding-inline: 4rem;
+  padding-block: 4rem 10rem;
+}
+
+.work .work-box {
+  margin-bottom: 2.5rem;
+  margin-inline: auto;
+  max-width: fit-content;
+  max-height: max-content;
+  border-bottom: 1px solid var(--neutral-800);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .work-box .title {
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  color: var(--neutral-800);
+  margin-block-end: 0.5em;
+  position: relative;
+  max-width: fit-content;
+  margin-inline: auto;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .work-box .title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 0.125em;
+  background-color: var(--primary-600);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .quotes-box .sub-title {
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-xxl);
+  font-weight: 700;
+  color: var(--neutral-750);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .work-box .react-tabs {
+  display: flex;
+  color: var(--neutral-800);
+  background: transparent;
+  margin-block: 2.5em;
+  line-height: 1.75rem;
+}
+
+.work .react-tabs__tab-list {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.work .react-tabs__tab {
+  list-style: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  color: var(--neutral-750);
+  border-left: 4px solid var(--neutral-500);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .react-tabs__tab:hover {
+  color: var(--primary-600);
+  background-color: var(--neutral-410);
+}
+
+.work .react-tabs__tab--selected {
+  display: block;
+  border-left: 4px solid var(--primary-600);
+  color: var(--primary-600);
+}
+
+.work .react-tabs__tab-panel {
+  display: none;
+  max-width: 500px;
+  padding-left: 20px;
+  margin-block: 1em;
+}
+
+.work .react-tabs__tab-panel--selected {
+  display: block;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .panel-content {
+  text-align: left;
+}
+
+.work .job {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.work .job .job-title {
+  font-family: var(--ff-sans-title);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--neutral-800);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .job .job-title .job-date {
+  font-family: var(--ff-sans-body);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  color: var(--neutral-750);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.work .job .job-desc {
+  list-style: none;
+  margin-block: 0;
+}
+
+.work .job .job-desc li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.work .job .job-desc li::before {
+  content: '\25B9';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+}
+
+.work .quotes-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.375rem;
+  justify-content: center;
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+@media only screen and (max-width: 50em) {
+  .work {
+    padding-block: 5rem 6rem;
+    padding-inline: 1.5rem;
+  }
+
+  .work .work-box .title {
+    font-size: var(--fs-xl);
+  }
+
+  .work .work-box .sub-title {
+    font-size: var(--fs-lg);
+  }
+
+  .work .work-box .react-tabs {
+    flex-direction: column;
+    margin: 1.5em 0;
+    text-align: center;
+  }
+
+  .work .react-tabs__tab-list {
+    flex-direction: row;
+    width: fit-content;
+  }
+
+  .work .react-tabs__tab {
+    padding: 12px;
+    border-left: none;
+    border-bottom: 4px solid var(--neutral-500);
+    font-size: var(--fs-xs);
+  }
+
+  .work .react-tabs__tab-panel {
+    padding: 0;
+    font-size: var(--fs-sm);
+  }
+
+  .work .react-tabs__tab--selected {
+    border-left: none;
+    border-bottom: 4px solid var(--primary-600);
+  }
+
+  .work .job .job-title {
+    font-size: var(--fs-base);
+  }
+
+  .work .quotes-box {
+    justify-content: center;
+  }
+  .work .quotes-box {
+    font-size: var(--fs-base);
+  }
+}

@@ -1,0 +1,42 @@
+.anchor-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75em;
+  position: fixed;
+  bottom: 0;
+  left: 1.5em;
+  z-index: 30;
+}
+
+.anchor-links .links-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+
+.anchor-links .links-box .link {
+  display: block;
+  text-decoration: none;
+  color: var(--primary-570);
+  transition: all var(--ms300) var(--ease-out-expo);
+  font-size: 1.75rem;
+}
+
+.anchor-links .decoration {
+  width: 1px;
+  height: 4rem;
+  background-color: var(--primary-570);
+  transition: all var(--ms300) var(--ease-out-expo);
+}
+
+.anchor-links .links-box .link:is(:hover, :active, :focus) {
+  color: var(--primary-600);
+  transform: translateY(-0.125em);
+}
+
+@media only screen and (max-width: 50em) {
+  .anchor-links {
+    display: none;
+  }
+}
