@@ -1,6 +1,6 @@
 {
   "name": "nnischal.me",
-  "private": false,
+  "private": true,
   "version": "0.8.1",
   "type": "module",
   "scripts": {
