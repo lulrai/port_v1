@@ -6,6 +6,9 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
+  merge:
+    branches:
+      - main
 jobs:
   # First job to build the resume and push it to the repository
   build_resume:
