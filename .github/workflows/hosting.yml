@@ -60,6 +60,7 @@ jobs:
               committer: {
                 name: 'GitHub Actions',
                 email: 'neupanenischal1@gmail.com'
+              }
             });
 
   # Second job to build the project and deploy it to Firebase Hosting
