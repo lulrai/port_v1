@@ -51,7 +51,7 @@ jobs:
             const path = require('path');
             const pdf = fs.readFileSync(path.resolve('./public/resume.pdf'));
             const pdfBase64 = Buffer.from(pdf).toString('base64');
-            github.repos.createOrUpdateFile({
+            github.repos.createOrUpdateFileContents({
               owner: context.repo.owner,
               repo: context.repo.repo,
               path: 'public/resume.pdf',
