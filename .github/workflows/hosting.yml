@@ -31,7 +31,7 @@ jobs:
           # Extra arguments to be passed to the LaTeX engine
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           # Arbitrary bash codes to be executed before compiling LaTeX documents
-          pre_compile: tlmgr update --self && tlmgr update --all
+          # pre_compile: tlmgr update --self && tlmgr update --all
           # Arbitrary bash codes to be executed after compiling LaTeX documents
           post_compile: latexmk -c
           latexmk_use_xelatex: true
@@ -41,7 +41,26 @@ jobs:
         run: |
           mv ./resume_builder/resume_main.pdf ./public/resume.pdf
 
-      # Step to push the PDF file to the repository
+      # Retrieve the sha of the file in the repository if it exists
+      - name: Get SHA of Resume.pdf file
+        id: get-sha
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const pdf = fs.readFileSync(path.resolve('./public/resume.pdf'));
+            const pdfBase64 = Buffer.from(pdf).toString('base64');
+            const { data } = await github.rest.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: 'public/resume.pdf'
+            });
+            const sha = data.sha;
+            core.setOutput('sha', sha);
+
+      # Step to push the PDF file to the repository using the SHA
       - name: Upload Resume.pdf file to repository
         uses: actions/github-script@v6
         with:
@@ -51,16 +70,14 @@ jobs:
             const path = require('path');
             const pdf = fs.readFileSync(path.resolve('./public/resume.pdf'));
             const pdfBase64 = Buffer.from(pdf).toString('base64');
-            github.repos.createOrUpdateFileContents({
+            const sha = '${{ steps.get-sha.outputs.sha }}';
+            const { data } = await github.rest.repos.createOrUpdateFileContents({
               owner: context.repo.owner,
               repo: context.repo.repo,
               path: 'public/resume.pdf',
-              message: 'Updated resume',
+              message: 'Update Resume.pdf',
               content: pdfBase64,
-              committer: {
-                name: 'GitHub Actions',
-                email: 'neupanenischal1@gmail.com'
-              }
+              sha: sha
             });
 
   # Second job to build the project and deploy it to Firebase Hosting
