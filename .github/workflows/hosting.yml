@@ -39,14 +39,14 @@ jobs:
       # Step to verify the PDF file exists and move it to the public folder
       - name: Move Resume.pdf file
         run: |
-          mv resume_main.pdf ../public/resume.pdf
+          mv ./resume_builder/resume_main.pdf ./public/resume.pdf
 
       # Step to push the PDF file to the repository
       - name: Upload Resume.pdf file to repository
         run: |
           git config --global user.name "lulrai"
           git config --global user.email "neupanenischal1@gmail.com"
-          git add ../public/resume.pdf
+          git add ./public/resume.pdf
           git commit -m "Updated resume"
           git push
 
