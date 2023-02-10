@@ -1,4 +1,4 @@
-import * as pdfjs from 'pdfjs-dist';
+import { GlobalWorkerOptions, version, getDocument } from 'pdfjs-dist/legacy/build/pdf';
 
 const getPdfText = async (
   pdfUrl: string,
@@ -12,8 +12,8 @@ const getPdfText = async (
     description?: string[];
   }>
 > => {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  const pdf = await pdfjs.getDocument(pdfUrl).promise;
+  GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${version}/pdf.worker.js`;
+  const pdf = await getDocument(pdfUrl).promise;
   const page = await pdf.getPage(1);
   const textContent = await page.getTextContent();
 

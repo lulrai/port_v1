@@ -13,7 +13,6 @@ const Jobs = () => {
       setHist(allHistories);
     };
     fetchHistory();
-    console.log(hist);
   }, []);
 
   const isMobile = window.innerWidth < 475;
