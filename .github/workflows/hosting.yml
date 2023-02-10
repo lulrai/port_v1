@@ -12,8 +12,6 @@ name: Generate Resume and Deploy to Firebase Hosting on merge to main
 jobs:
   # First job to build the resume and push it to the repository
   build_resume:
-    permissions:
-      pull-requests: 'write'
     # Only run this job if the commit message contains [resume]
     if: "contains(github.event.head_commit.message, '[resume]')"
     runs-on: ubuntu-latest
@@ -35,7 +33,7 @@ jobs:
           # Extra arguments to be passed to the LaTeX engine
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           # Arbitrary bash codes to be executed before compiling LaTeX documents
-          # pre_compile: tlmgr update --self && tlmgr update --all
+          pre_compile: tlmgr update --self && tlmgr update --all
           # Arbitrary bash codes to be executed after compiling LaTeX documents
           post_compile: latexmk -c
           latexmk_use_xelatex: true
@@ -95,6 +93,8 @@ jobs:
       # Step to checkout the repository
       - name: Checkout Repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
 
       # Step to install Node.js and Yarn
       - name: Install Node
