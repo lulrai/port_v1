@@ -14,6 +14,7 @@ jobs:
   build_resume:
     # Only run this job if the commit message contains [resume]
     if: "contains(github.event.head_commit.message, '[resume]')"
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       # Step to checkout the repository
