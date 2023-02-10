@@ -10,10 +10,10 @@ name: Generate Resume and Deploy to Firebase Hosting on merge to main
     branches:
       - main
 jobs:
-  permissions:
-    pull-requests: 'write'
   # First job to build the resume and push it to the repository
   build_resume:
+    permissions:
+      pull-requests: 'write'
     # Only run this job if the commit message contains [resume]
     if: "contains(github.event.head_commit.message, '[resume]')"
     runs-on: ubuntu-latest
