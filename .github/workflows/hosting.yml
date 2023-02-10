@@ -49,7 +49,7 @@ jobs:
           script: |
             const fs = require('fs');
             const path = require('path');
-            const pdf = fs.readFileSync(path.resolve(__dirname, 'public/resume.pdf'));
+            const pdf = fs.readFileSync(path.resolve('./public/resume.pdf'));
             const pdfBase64 = Buffer.from(pdf).toString('base64');
             github.repos.createOrUpdateFile({
               owner: context.repo.owner,
