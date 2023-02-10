@@ -19,6 +19,8 @@ jobs:
       # Step to checkout the repository
       - name: Checkout Repo for Resume
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
 
       # Step to compile the LaTeX resume
       - name: Compile Resume LaTeX to PDF
@@ -63,8 +65,6 @@ jobs:
       # Step to push the PDF file to the repository using the SHA
       - name: Upload Resume.pdf file to repository
         uses: actions/github-script@v6
-        permissions:
-          contents: write
         with:
           github-token: ${{ secrets.PAT }}
           script: |
