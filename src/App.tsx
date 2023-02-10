@@ -8,7 +8,6 @@ import {
   Projects,
   Connect,
   Footer,
-  AnalyticsComponent,
   Work,
 } from '@/components';
 const App = () => {
@@ -36,7 +35,6 @@ const App = () => {
           <AnchorMail />
         </main>
         <Footer />
-        <AnalyticsComponent />
       </div>
     </HelmetProvider>
   );
