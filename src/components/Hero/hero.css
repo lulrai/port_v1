@@ -30,7 +30,7 @@
   white-space: nowrap;
   border-right: 2px solid var(--primary-570);
   width: 0;
-  animation: type calc(var(--s5) + var(--ms500)) steps(67, jump-end) forwards,
+  animation: type calc(var(--s5) + var(--ms300)) steps(67, jump-end) forwards,
     blink var(--ms900) steps(1, jump-end) 3 forwards;
   animation-delay: var(--ms300), var(--s3);
   transition: all var(--ms300) var(--ease-out-expo);
