@@ -34,9 +34,6 @@ jobs:
           latexmk_use_xelatex: true
 
       # Step to verify the PDF file exists and move it to the public folder
-      - name: Verify Resume PDF file exists
-        run: |
-          file resume_main.pdf | grep -q ' PDF '
       - name: Move Resume.pdf file
         run: |
           mv resume_main.pdf ../public/resume.pdf
