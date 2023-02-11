@@ -21,15 +21,17 @@ const getPdfText = async (
   textContent.items.forEach((item: any) => {
     content += item.str + ' ';
   });
+
   // Get only the experience section
   const experienceRegex = /EXPERIENCE(.*)PROJECT/;
   const experienceMatch = experienceRegex.exec(content);
   if (experienceMatch) {
     content = experienceMatch[1].replaceAll('- ', '').trim();
   }
+
   // Split each experience into an array using regex
   const generalExp =
-    /([A-Z][a-z]+(?:[\s\xA0]{1}[a-z]+)*(?:\s{2}[a-z]+(?:\s[A-Za-z.]+)*))  \u{11}   ([a-z]{3} [0-9]{4}) \u{2013} ([a-z]{3} [0-9]{4}|[a-z]*)   \u{BD}   ([a-z]+, *[a-z]+[, a-z]*)/giu;
+    /([A-Z][a-z]+(?:[\s\xA0]{1}[a-z]+)*(?:\s{2}[a-z]+(?:\s[A-Za-z.]+)*))  \u{f073}   ([a-z]{3} [0-9]{4}) \u{2013} ([a-z]{3} [0-9]{4}|[a-z]*)   \u{f041}   ([a-z]+, *[a-z]+[, a-z]*)/giu;
   const experienceTitles = content.matchAll(generalExp);
   // Store the matched values in an array of dictionaries
   const experiences: {
