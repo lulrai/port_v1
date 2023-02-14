@@ -42,7 +42,7 @@ const Projects: React.FC = () => {
         <h3 className="title">Featured projects</h3>
         <h4 className="sub-title">Some of the things I've built</h4>
         <div className="projects-box">
-          {repos.slice(0, 2).map((repo) => (
+          {repos.slice(0, 3).map((repo) => (
             <Sample
               key={repo.repo_id}
               name={repo.reponame}

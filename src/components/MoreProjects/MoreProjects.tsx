@@ -44,7 +44,7 @@ const MoreProjects: FC = () => {
 
   return (
     <animated.ul style={box} className="more">
-      {repos.slice(2).map((project) => (
+      {repos.slice(3).map((project) => (
         <animated.li style={item} key={project.repo_id}>
           <div className="card">
             <div className="decoration">
