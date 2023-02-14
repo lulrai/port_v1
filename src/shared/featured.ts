@@ -69,7 +69,7 @@ const fetchRepos = async () => {
           repo_img: image_info,
         };
       }),
-    );
+    ).then((repos) => repos.filter((repo) => !repo.repodesc.includes('[exclude]')));
     return repoData
       .sort((a, b) => b.repo_stars - a.repo_stars)
       .slice(1)
