@@ -1,5 +1,5 @@
 # Build Resume and Deploy to Firebase Hosting
-name: Generate Resume and Deploy to Firebase Hosting
+name: Generate Resume and Deploy
 'on':
   push:
     branches:
