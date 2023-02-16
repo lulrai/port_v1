@@ -72,6 +72,11 @@
   transition: all var(--ms300) var(--ease-out-expo);
 }
 
+.work .react-tabs__tab:hover,
+:active {
+  outline: none;
+}
+
 .work .react-tabs__tab:hover {
   color: var(--primary-600);
   background-color: var(--neutral-410);
@@ -83,6 +88,11 @@
   color: var(--primary-600);
 }
 
+.work .react-tabs__tab:focus,
+.work .react-tabs__tab--selected:focus {
+  outline: none;
+}
+
 .work .react-tabs__tab-panel {
   display: none;
   max-width: 500px;
@@ -92,7 +102,6 @@
 
 .work .react-tabs__tab-panel--selected {
   display: block;
-  transition: all var(--ms300) var(--ease-out-expo);
 }
 
 .work .panel-content {

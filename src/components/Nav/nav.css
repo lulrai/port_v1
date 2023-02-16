@@ -81,6 +81,7 @@
     padding: 1.5rem;
     position: fixed;
     overflow: visible;
+    width: 100%;
   }
 
   .nav-menu {
@@ -108,10 +109,13 @@
     transform: translateY(-20%);
     opacity: 0;
     z-index: 0;
+    left: 0;
+    width: 100%;
   }
 
   .nav-links {
     font-size: var(--fs-base);
+    padding: 8px;
   }
 
   .nav-links-box.expanded {

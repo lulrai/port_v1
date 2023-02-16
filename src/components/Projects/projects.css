@@ -139,7 +139,10 @@
 
   .projects .title {
     font-size: var(--fs-xl);
+    margin-left: auto;
+    margin-right: auto;
   }
+  
   .projects .sub-title,
   .project-title {
     font-size: var(--fs-lg);
@@ -156,6 +159,14 @@
 
   .projects-box .sample-box {
     display: grid;
+  }
+
+  .projects-box .sample-box .stack {
+    justify-content: center;
+  }
+
+  .projects-box .text-box {
+    align-items: center;
   }
 
   .projects-box .sample-box {

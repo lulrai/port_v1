@@ -13,3 +13,10 @@
   border-radius: 2em;
   transition: all var(--ms300) var(--ease-out-expo);
 }
+
+@media only screen and (max-width: 50em) {
+  .btn-box {
+    display: flex;
+    justify-content: center;
+  }
+}

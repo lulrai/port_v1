@@ -11,7 +11,7 @@ jobs:
   # First job to build the resume and push it to the repository
   build_resume:
     # Only run this job if the commit message contains [resume]
-    if: "contains(github.event.head_commit.message, '[resume]') || (contains(github.event.head_commit.message, '[ci]') && !needs.build_and_deploy)"
+    if: "contains(github.event.head_commit.message, '[resume]')"
     runs-on: ubuntu-latest
     steps:
       # Step to checkout the repository
@@ -82,10 +82,8 @@ jobs:
 
   # Second job to build the project and deploy it to Firebase Hosting
   build_and_deploy:
-    # Build the resume first if it needs to be built
-    needs: build_resume
     # Only run this job if the commit message does contain [ci]
-    if: "contains(github.event.head_commit.message, '[resume]') || contains(github.event.head_commit.message, '[ci]')"
+    if: "contains(github.event.head_commit.message, '[ci]') || (contains(github.event.head_commit.message, '[ci]' && contains(github.event.head_commit.message, '[resume]') && needs.build_resume))"
     runs-on: ubuntu-latest
     steps:
       # Step to checkout the repository
