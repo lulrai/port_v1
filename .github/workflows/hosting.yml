@@ -108,6 +108,8 @@ jobs:
 
       - name: Build production bundle
         run: yarn build
+        env:
+          VITE_GH_API_KEY: ${{ secrets.VITE_GH_API_KEY }}
 
       # Step to deploy to Firebase Hosting
       - name: Deploy to Firebase
