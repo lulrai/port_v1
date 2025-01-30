@@ -7,12 +7,12 @@ const navLinks: {
     id: 'hero',
   },
   {
-    title: 'Projects',
-    id: 'projects',
-  },
-  {
     title: 'Experience',
     id: 'work',
+  },
+  {
+    title: 'Projects',
+    id: 'projects',
   },
   {
     title: 'Connect',
