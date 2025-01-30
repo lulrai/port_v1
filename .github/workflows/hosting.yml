@@ -83,7 +83,6 @@ jobs:
   # Second job to build the project and deploy it to Firebase Hosting
   build_and_deploy:
     needs: build_resume
-    # Only run this job if the commit message does contain [ci]
     if: contains(github.event.head_commit.message, '[ci]') || (contains(github.event.head_commit.message, '[resume]') && needs.build_resume.result == 'success')
     runs-on: ubuntu-latest
     steps:
@@ -94,22 +93,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # Step to install Node.js and Yarn
-      - name: Install Node
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '16'
 
-      # Step to install dependencies and build the project
-      - name: Install Yarn dependencies
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
       - name: Build production bundle
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: build
-        env:
-          VITE_GH_API_KEY: ${{ secrets.VITE_GH_API_KEY }}
+        run: yarn build
 
       # Step to deploy to Firebase Hosting
       - name: Deploy to Firebase
