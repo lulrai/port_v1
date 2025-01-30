@@ -82,7 +82,6 @@ jobs:
 
   # Second job to build the project and deploy it to Firebase Hosting
   build_and_deploy:
-    needs: build_resume
     if: contains(github.event.head_commit.message, '[ci]') || (contains(github.event.head_commit.message, '[resume]') && needs.build_resume.result == 'success')
     runs-on: ubuntu-latest
     steps:
