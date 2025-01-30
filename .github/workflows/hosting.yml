@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Repo for Resume
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # Step to compile the LaTeX resume
       - name: Compile Resume LaTeX to PDF
@@ -46,7 +46,7 @@ jobs:
         id: get-sha
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const path = require('path');
@@ -64,7 +64,7 @@ jobs:
       - name: Upload Resume.pdf file to repository
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const path = require('path');
@@ -91,7 +91,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # Step to install Node.js and Yarn
       - name: Install Node
