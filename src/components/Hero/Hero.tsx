@@ -48,12 +48,12 @@ const Hero = () => {
             <span className="name">Nischal Neupane</span>
           </animated.h1>
           <animated.div style={secondBoot}>
-            <h2 className="sub-title">Software Engineer</h2>
+            <h2 className="sub-title">ML/Software Engineer</h2>
             <p className="intro">
               I am a data science enthusiast and a software engineer. Does that make me a "data engineer"...? <br />
               <span className="status">I'm currently looking for new opportunities!</span>
             </p>
-            <Button title="See My Projects" link="#projects" />
+            <Button title="See My Experiences" link="#work" />
           </animated.div>
         </div>
         <animated.div style={firstBoot} className="image-box">

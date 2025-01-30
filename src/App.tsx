@@ -27,8 +27,8 @@ const App = () => {
         <Nav />
         <main>
           <Hero />
-          <Projects />
           <Work />
+          <Projects />
           <Connect />
           <WhoAmI />
           <AnchorLinks />

@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="text-box">
         <p className="text">
-          Nischal Neupane {String.fromCodePoint(0x1f389)} 2023 {String.fromCodePoint(0x1f389)}
+          Nischal Neupane {String.fromCodePoint(0x1f389)} 2025 {String.fromCodePoint(0x1f389)}
         </p>
       </div>
     </footer>
