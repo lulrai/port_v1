@@ -1,0 +1,402 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage[explicit]{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Nischal Neupane's CV},
+    pdfauthor={Nischal Neupane},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+    \usepackage{newtxtext} % Times New Roman font
+\fi
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\makeatletter
+\let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Nischal Neupane - Page \thepage{} of \pageref*{LastPage}}
+}{}{} % replace number by desired string
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{
+    % avoid page braking right after the section title
+    \needspace{4\baselineskip}
+    % make the font size of the section title large and color it with the primary color
+    \Large\color{primaryColor}
+}{
+}{
+}{
+    % print bold title, give 0.15 cm space and draw a line of 0.8 pt thickness
+    % from the end of the title to the end of the body
+    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
+}[] % section title formatting
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+% \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{1 cm, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \fontsize{30 pt}{30 pt}
+        \textbf{Nischal Neupane}
+
+        \vspace{0.2 cm}
+
+        \normalsize
+        \mbox{{\footnotesize\faMapMarker*}\hspace*{0.13cm}Enschede, Netherlands}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:neupanenischal1@gmail.com}{{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}neupanenischal1@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+310684880710}{{\footnotesize\faPhone*}\hspace*{0.13cm}(+31) 068 488 0710}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://nnischal.me/}{{\footnotesize\faLink}\hspace*{0.13cm}nnischal.me}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/nneupane2}{{\footnotesize\faLinkedinIn}\hspace*{0.13cm}nneupane2}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/lulrai}{{\footnotesize\faGithub}\hspace*{0.13cm}lulrai}}%
+    \end{header}
+
+    \vspace{0.1 cm - 0.1 cm}
+
+    \section{Experience}
+        
+        \begin{twocolentry}{
+            Remote (Australia)
+
+        Dec 2023 – Now
+        }
+            \textbf{\href{https://alderongames.com}{Alderon Games}}
+            
+            \textit{Machine Learning / Back-end Engineer}
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        
+        \begin{highlights}
+            \item Fine-tuned BERT-based models (110M/340M params) for toxicity detection at 10,000+ messages/min with 95\% accuracy, 98\% precision, and a 40\% boost in moderation efficiency.
+            \item Deployed the model via FastAPI + Celery, cutting average response times by 40\% at peak loads of up to 50,000 requests/hour.
+            \item Authored and maintained a comprehensive developer wiki using Vitepress, integrating advanced custom components and OAuth2 authentication, reducing onboarding times by 30\% for new developers.
+            \item Developed and deployed multiple applications leveraging the game's RCON protocol, automating over 500 daily support tasks and reducing manual workload by 50\%.
+        \end{highlights}
+
+        \vspace{0.3 cm}
+
+        \begin{twocolentry}{
+            Veldhoven, Netherlands
+
+        Apr 2023 – Dec 2023
+        }
+            \textbf{\href{https://www.asml.com/en}{ASML}}
+            
+            \textit{Machine Learning Engineer}
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        
+        \begin{highlights}
+            \item Built a GPT-based Transformer (encoder-only) on 1M+ Twinscan EUV logs spanning 10+ features, achieving 90\% accuracy and 88\% recall for next-error event prediction. Leveraged KNIME and Azure Databricks for data pre-processing and transformation.
+            \item Applied Layerwise Relevance Propagation (LRP) to pinpoint root causes, cutting false positives by 15\% and boosting diagnostic insights.
+            \item Collaborated with stakeholders to transform the prototype into an internal product, demonstrating business value through a case study that highlighted a potential 25\% reduction in unplanned maintenance downtime.
+        \end{highlights}
+
+        \vspace{0.3 cm}
+
+        \begin{twocolentry}{
+            Enschede, Netherlands
+
+        Feb 2022 – Feb 2023
+        }
+            \textbf{\href{https://convergence.demcon.com}{DEMCON Convergence}}
+            
+            \textit{Junior Software Engineer}
+        \end{twocolentry}
+        \vspace{0.1 cm}
+
+        \begin{highlights}
+            \item Developed front- / back-end solutions for embedded microfluidics with QML, C++, and JavaScript, reducing user configuration time by 30\%.
+            \item Automated hardware tests to reach 95\% coverage, cutting manual testing by 40\% and securing seamless real-time performance.
+            \item Optimized communication between the embedded system and hardware components, improving data throughput by 25\% while maintaining low-latency interactions critical for microfluidic device operations.
+        \end{highlights}
+
+        \vspace{0.3 cm}
+
+        \begin{twocolentry}{
+            Omaha, Nebraska, USA
+
+        Aug 2020 – Jun 2021
+        }
+            \textbf{\href{https://www.buckle.com}{The Buckle Inc.}}
+            
+            \textit{Junior Data Scientist}
+        \end{twocolentry}
+        \vspace{0.1 cm}
+
+        \begin{highlights}
+            \item Built a neural network for 50-dimensional product embeddings, increasing Click-Through Rates (CTR) by 12\% and Average Order Value (AOV) by 9\% for The Buckle’s online storefront.
+            \item Processed 1M+ transactions to deliver real-time, parameterized cart recommendations with sub-200ms latency, cutting manual intervention.
+            \item Executed A/B testing on new recommendations, analyzing data from over 500k emails to determine optimal strategies that improved customer interactions and tripled click-through engagements during targeted marketing periods.
+        \end{highlights}
+
+
+    \section{Skills and Interests}
+        
+        \begin{onecolentry}
+            \textbf{Languages:} Python, JavaScript (React, Vue3, TypeScript), C++, C, Java, SQL
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Technologies:} FastAPI, Kubernetes (microk8s), Docker, MongoDB, RCON, Discord API, Prometheus, OpenAI Whisper/OpenAI GPT, PyTorch, KNIME, Azure Databricks, Git
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Interests:} Table Tennis, Weightlifting, Traveling
+        \end{onecolentry}
+
+
+    \section{Projects}
+
+        \begin{twocolentry}{
+            \href{https://github.com/Lurulai/potbot}{Lurulai/potbot}
+        }
+            \textbf{potbot} [private repository]
+        \end{twocolentry}
+        \vspace{0.1 cm}
+            
+        \begin{highlights}
+            \item Created PotBot, a Discord bot for the game "Path of Titans," used by 200k+ users and generating \$1k+ monthly revenue via Patreon.
+            \item Designed a Kubernetes-deployed microservices architecture with HPA, scaling to handle 1M+ webhook requests daily with high reliability.
+            \item Integrated RCON protocol for seamless game server communication, automated server moderation, and built a React dashboard with FastAPI backend for user management.
+            \item \textit{Tools/Languages Used: Python, TypeScript (React), FastAPI, RCON, Kubernetes (k8s), Discord API, Prometheus, Patreon API}
+        \end{highlights}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/lulrai/assistant-gpt}{lulrai/assistant-gpt}
+        }
+            \textbf{Synchronized Desktop Calendar}
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        
+        \begin{highlights}
+            \item Developed Assistant-GPT, a Python-based voice assistant integrating speech recognition (Google, Whisper, PocketSphinx) and text-to-speech (Coqui-Ai-TTS) engines, achieving 20\% higher recognition accuracy compared to traditional systems.
+            \item Built a modular command system supporting custom voice triggers and actions, improving user productivity by automating tasks such as querying ChatGPT, retrieving the current time, and sending iMessages on macOS.
+            \item Implemented advanced features like ambient noise calibration and background listeners, enhancing speech recognition reliability and user experience by 30\%.
+            \item \textit{Tools/Languages Used: Python (Pytorch), Whisper, Wit.ai, Pocketsphinx}
+        \end{highlights}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/lulrai/bot-client}{lulrai/bot-client}
+        }
+            \textbf{LoTRO Data Extractor}
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        
+        \begin{highlights}
+            \item Developed a character tracking system for "Lord of the Rings Online," integrating Python with a message queue, and a Discord bot. Enabled real-time updates for 1,000+ tracked characters, improving user engagement by 25\% within the community.
+            \item Reverse-engineered the game client using HexRays IDA and HexEdit to extract memory pointers, successfully retrieving critical in-game data such as character stats and assets, reducing manual data process by 90\% and enabling advanced automation.
+            \item \textit{Tools/Languages Used: Python, HexRays IDA, HexEdit}
+        \end{highlights}
+
+    
+
+
+    \section{Education}
+
+        \begin{threecolentry}{\textbf{MS}}{
+            Aug 2021 – Dec 2023
+        }
+            \textbf{University of Twente}, Data Science
+            \begin{highlights}
+                \item CGPA: 8.0/10.0
+            \end{highlights}
+        \end{threecolentry}
+
+        \begin{threecolentry}{\textbf{BS}}{
+            Aug 2017 – May 2021
+        }
+            \textbf{University of Nebraska-Lincoln}, Computer Science, Mathematics
+            \begin{highlights}
+                \item CGPA: 9.4/10.0
+            \end{highlights}
+        \end{threecolentry}
+
+    
+    \section{Publications}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                May 2021
+            }
+                \textbf{The Buckle: Product Recommendation Engine}
+
+                \vspace{0.10 cm}
+
+                \mbox{Jack Arens}, \mbox{Jacob Sullivan}, \mbox{\textbf{\textit{Nischal Neupane}}}, \mbox{Ray Huck}, \mbox{Joseph Carrigan}
+                \vspace{0.10 cm}
+
+        \href{https://www.academia.edu/127321545/The_Buckle_Product_Recommendation_Engine?source=swp_share}{https://www.academia.edu/127321545/The\_Buckle\_Product\_Recommendation\_Engine}
+            \end{twocolentry}
+        \end{samepage}
+
+    
+    
+
+
+    
+
+\end{document}

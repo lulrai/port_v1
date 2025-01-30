@@ -11,7 +11,7 @@ jobs:
   # First job to build the resume and push it to the repository
   build_resume:
     # Only run this job if the commit message contains [resume]
-    if: "contains(github.event.head_commit.message, '[resume]')"
+    if: contains(github.event.head_commit.message, '[resume]')
     runs-on: ubuntu-latest
     steps:
       # Step to checkout the repository
@@ -25,7 +25,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           # The root LaTeX file to be compiled
-          root_file: resume_main.tex
+          root_file: main.tex
           # The working directory for this action
           working_directory: resume_builder
           # Extra arguments to be passed to the LaTeX engine
@@ -39,7 +39,7 @@ jobs:
       # Move the pdf to the public folder
       - name: Move Resume.pdf file
         run: |
-          mv ./resume_builder/resume_main.pdf ./public/resume.pdf
+          mv ./resume_builder/main.pdf ./public/resume.pdf
 
       # Retrieve the sha of the file in the repository if it exists
       - name: Get SHA of Resume.pdf file
@@ -82,8 +82,9 @@ jobs:
 
   # Second job to build the project and deploy it to Firebase Hosting
   build_and_deploy:
+    needs: build_resume
     # Only run this job if the commit message does contain [ci]
-    if: "contains(github.event.head_commit.message, '[ci]') || (contains(github.event.head_commit.message, '[ci]' && contains(github.event.head_commit.message, '[resume]') && needs.build_resume))"
+    if: contains(github.event.head_commit.message, '[ci]') || (contains(github.event.head_commit.message, '[resume]') && needs.build_resume.result == 'success')
     runs-on: ubuntu-latest
     steps:
       # Step to checkout the repository
